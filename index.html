@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <script type="importmap">
+    {
+      "imports": {
+        "@material/web/": "https://esm.run/@material/web/"
+      }
+    }
+  </script>
+  <script type="module">
+    import '@material/web/all.js';
+    import {styles as typescaleStyles} from '@material/web/typography/md-typescale-styles.js';
+
+    document.adoptedStyleSheets.push(typescaleStyles.styleSheet);
+  </script>
+  <style>
+    :root {
+      --md-sys-color-primary: #FFFDE7;
+      --md-sys-color-on-primary: #000;
+      --md-sys-color-surface: #fff;
+      --md-sys-color-on-surface: #000;
+      --md-sys-color-text-secondary: rgba(0, 0, 0, 0.54);
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      padding: 20px;
+      background-color: #fff8f3;
+      color: var(--md-sys-color-on-surface);
+      position: relative;
+      min-height: 100vh;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background-color: #FFFDE7;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      margin-bottom: 40px;
+      color: var(--md-sys-color-on-surface);
+    }
+
+    th, td {
+      padding: 16px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f2e0c9;
+      font-weight: 500;
+    }
+
+    tr {
+      background-color: #FFFDE7;
+    }
+
+    tr:nth-child(even) {
+      background-color: #FFFACD;
+    }
+
+    tr:hover {
+      background-color: #f1f1f1;
+    }
+
+    .update-text {
+      margin-top: 20px;
+      color: var(--md-sys-color-text-secondary);
+      font-size: 0.875rem;
+    }
+  </style>
+</head>
+<body>
+  <h1 class="md-typescale-display-medium">Jadłospis ZPSM w Elblągu</h1>
+  
+  <table>
+    <thead>
+      <tr>
+        <th>Dzień tygodnia</th>
+        <th>Śniadanie</th>
+        <th>Drugie danie</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Poniedziałek</td>
+        <td>Brak danych</td>
+        <td>Brak danych</td>
+      </tr>
+      <tr>
+        <td>Wtorek</td>
+        <td>Brak danych</td>
+        <td>Brak danych</td>
+      </tr>
+      <tr>
+        <td>Środa</td>
+        <td>Brak danych</td>
+        <td>Brak danych</td>
+      </tr>
+      <tr>
+        <td>Czwartek</td>
+        <td>Brak danych</td>
+        <td>Brak danych</td>
+      </tr>
+      <tr>
+        <td>Piątek</td>
+        <td>Brak danych</td>
+        <td>Brak danych</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p class="md-typescale-display">Ostatnia aktualizacja: 28.04 o godz. 14:30</p>
+</body>
+</html>
