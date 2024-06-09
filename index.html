@@ -24,6 +24,7 @@
       --md-sys-color-surface: #fff;
       --md-sys-color-on-surface: #000;
       --md-sys-color-text-secondary: rgba(0, 0, 0, 0.54);
+      --md-sys-color-info-box: #f2e0c9;
     }
 
     body {
@@ -33,6 +34,7 @@
       color: var(--md-sys-color-on-surface);
       position: relative;
       min-height: 100vh;
+      overflow: hidden; /* Disable scrolling */
     }
 
     h1 {
@@ -40,13 +42,31 @@
       margin-bottom: 40px;
     }
 
+    .info-box {
+      background-color: var(--md-sys-color-info-box);
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 40px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .info-box h2 {
+      margin: 0 0 16px;
+    }
+
+    .info-box p {
+      margin: 8px 0;
+    }
+
     table {
       width: 100%;
-      border-collapse: collapse;
+      border-collapse: separate;
+      border-spacing: 0;
       background-color: #FFFDE7;
-      border-radius: 8px;
+      border-radius: 16px;
       overflow: hidden;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      margin-top: 30px;
       margin-bottom: 40px;
       color: var(--md-sys-color-on-surface);
     }
@@ -78,48 +98,147 @@
       color: var(--md-sys-color-text-secondary);
       font-size: 0.875rem;
     }
+
+    .today-info {
+      margin-bottom: 0;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --md-sys-color-primary: #333;
+        --md-sys-color-on-primary: #fff;
+        --md-sys-color-surface: #444;
+        --md-sys-color-on-surface: #fff;
+        --md-sys-color-text-secondary: rgba(255, 255, 255, 0.7);
+        --md-sys-color-info-box: #7F715A;
+      }
+
+      body {
+        background-color: #1d1a16;
+        color: var(--md-sys-color-on-surface);
+      }
+
+      .info-box {
+        background-color: var(--md-sys-color-info-box);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+      }
+
+      table {
+        background-color: #544D4D;
+        color: var(--md-sys-color-on-surface);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+      }
+
+      th {
+        background-color: #7F715A;
+      }
+
+      tr {
+        background-color: #6A5A3E;
+      }
+
+      tr:nth-child(even) {
+        background-color: #5D4F3A;
+      }
+
+      tr:hover {
+        background-color: #77694D;
+      }
+    }
+
+    table th:first-child {
+      border-top-left-radius: 16px;
+    }
+
+    table th:last-child {
+      border-top-right-radius: 16px;
+    }
+
+    table tr:last-child td:first-child {
+      border-bottom-left-radius: 16px;
+    }
+
+    table tr:last-child td:last-child {
+      border-bottom-right-radius: 16px;
+    }
   </style>
 </head>
 <body>
   <h1 class="md-typescale-display-medium">Jadłospis ZPSM w Elblągu</h1>
   
-  <table>
+  <div class="info-box">
+    <h2>Dzisiaj jest <span id="today-day"></span></h2>
+    <p class="md-typography--body2 today-info" id="soup-info"></p>
+    <p class="md-typography--body2" id="main-info"></p>
+  </div>
+
+  <table id="menu-table">
     <thead>
       <tr>
         <th>Dzień tygodnia</th>
-        <th>Śniadanie</th>
-        <th>Drugie danie</th>
+        <th>Zupa</th>
+        <th>Obiad</th>
       </tr>
     </thead>
     <tbody>
       <tr>
         <td>Poniedziałek</td>
-        <td>Brak danych</td>
-        <td>Brak danych</td>
+        <td>Zupa pomidorowa</td>
+        <td>Kurczak z ryżem</td>
       </tr>
       <tr>
         <td>Wtorek</td>
-        <td>Brak danych</td>
-        <td>Brak danych</td>
+        <td>Zupa ogórkowa</td>
+        <td>Gulasz</td>
       </tr>
       <tr>
         <td>Środa</td>
-        <td>Brak danych</td>
-        <td>Brak danych</td>
+        <td>Zupa kalafiorowa</td>
+        <td>Spaghetti</td>
       </tr>
       <tr>
         <td>Czwartek</td>
-        <td>Brak danych</td>
-        <td>Brak danych</td>
+        <td>Zupa cebulowa</td>
+        <td>Schabowy z ziemniakami</td>
       </tr>
       <tr>
         <td>Piątek</td>
-        <td>Brak danych</td>
-        <td>Brak danych</td>
+        <td>Zupa jarzynowa</td>
+        <td>Ryba z frytkami</td>
       </tr>
     </tbody>
   </table>
 
   <p class="md-typescale-display">Ostatnia aktualizacja: 28.04 o godz. 14:30</p>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const daysOfWeek = ['niedziela', 'poniedziałek', 'wtorek', 'środa', 'czwartek', 'piątek', 'sobota'];
+      const today = new Date().getDay();
+      const todayDayElement = document.getElementById('today-day');
+      const soupInfoElement = document.getElementById('soup-info');
+      const mainInfoElement = document.getElementById('main-info');
+      const menuTable = document.getElementById('menu-table');
+      const rows = menuTable.getElementsByTagName('tbody')[0].getElementsByTagName('tr');
+
+      todayDayElement.textContent = daysOfWeek[today];
+
+      if (today === 0 || today === 6) {
+        soupInfoElement.textContent = 'Następne dane o jadłospisie będą w poniedziałek między 8:00 - 10:00';
+        mainInfoElement.textContent = '';
+      } else {
+        for (let i = 0; i < rows.length; i++) {
+          const cells = rows[i].getElementsByTagName('td');
+          if (cells[0].textContent.toLowerCase() === daysOfWeek[today]) {
+            const soup = cells[1].textContent ? cells[1].textContent : 'Brak danych';
+            const main = cells[2].textContent ? cells[2].textContent : 'Brak danych';
+            soupInfoElement.textContent = `Zupa: ${soup}`;
+            mainInfoElement.textContent = `Obiad: ${main}`;
+            break;
+          }
+        }
+      }
+    });
+  </script>
 </body>
 </html>
