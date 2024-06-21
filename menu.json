@@ -1,0 +1,30 @@
+{
+    "days": [
+      {
+        "day": "Poniedziałek",
+        "zupa": "Pomidorowa",
+        "obiad": "Kurczak z ryżem"
+      },
+      {
+        "day": "Wtorek",
+        "zupa": "Ogórkowa",
+        "obiad": "Gulasz"
+      },
+      {
+        "day": "Środa",
+        "zupa": "Kalafiorowa",
+        "obiad": "Spaghetti"
+      },
+      {
+        "day": "Czwartek",
+        "zupa": "Cebulowa",
+        "obiad": "Schabowy z ziemniakami"
+      },
+      {
+        "day": "Piątek",
+        "zupa": "Jarzynowa",
+        "obiad": "Ryba z frytkami"
+      }
+    ]
+  }
+  
