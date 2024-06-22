@@ -2,28 +2,28 @@
     "days": [
       {
         "day": "Poniedziałek",
-        "zupa": "Pomidorowa",
-        "obiad": "Kurczak z ryżem"
+        "zupa": "Brak danych",
+        "obiad": "Brak danych"
       },
       {
         "day": "Wtorek",
-        "zupa": "Ogórkowa",
-        "obiad": "Gulasz"
+        "zupa": "Brak danych",
+        "obiad": "Brak danych"
       },
       {
         "day": "Środa",
-        "zupa": "Kalafiorowa",
-        "obiad": "Spaghetti"
+        "zupa": "Brak danych",
+        "obiad": "Brak danych"
       },
       {
         "day": "Czwartek",
-        "zupa": "Cebulowa",
-        "obiad": "Schabowy z ziemniakami"
+        "zupa": "Brak danych",
+        "obiad": "Brak danych"
       },
       {
         "day": "Piątek",
-        "zupa": "Jarzynowa",
-        "obiad": "Ryba z frytkami"
+        "zupa": "Brak danych",
+        "obiad": "Brak danych"
       }
     ]
   }
